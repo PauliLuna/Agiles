@@ -1,13 +1,14 @@
 import unittest
 import re
 
-sep= '\n |,'
+sep= '\n |,|;|//'
 
 def suma(string):
     if string == '':
         return 0
     else:
         nros = re.split(sep, string)
+        print(nros)
         return sum(int(x) for x in nros)
     
 
@@ -30,6 +31,11 @@ class SumaTest(unittest.TestCase):
     def test_4numerosComa(self):
         resultado = suma('7,5,2,1')
         self.assertEqual(resultado,15)
+
+    def test_superman(self):
+        resultado = suma("""//;
+                         1;3;6;4""")
+        self.assertEqual(resultado,14)
 
 if __name__ == '__main__':
     unittest.main()
