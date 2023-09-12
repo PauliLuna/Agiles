@@ -2,7 +2,7 @@
     "python.testing.unittestArgs": [
         "-v",
         "-s",
-        "./Clase2",
+        "./TP- Ahorcado",
         "-p",
         "test_*.py"
     ],
