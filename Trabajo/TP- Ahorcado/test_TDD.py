@@ -24,7 +24,6 @@ class ArriesgarPalabraTest(unittest.TestCase):
     def test_adivino_palabra(self):
         esperado = True
         actual = juego.arriesgoPalabra("giacomo")
-        print(actual)
         self.assertEqual(actual, esperado)
 
     def test_pierdo_palabra(self):
@@ -44,11 +43,39 @@ class RepetirPalabras(unittest.TestCase):
         self.assertEqual(actual, esperado)
 
 
-# class RegistrarPalabra(unittest.TestCase):
-#      def test_agrego(self):
-#           esperado = 
-#           actual = agrego
+class ArriesgoLetra(unittest.TestCase):
+     def test_adivino_letra(self):
+          esperado = True
+          actual = juego.arriesgoLetra("a")
+          self.assertEqual(actual, esperado)
 
+     def test_pierdo_letra(self):
+        esperado = False 
+        actual = juego.arriesgoPalabra("x")
+        self.assertEqual(actual, esperado)
+
+class RepetirLetras(unittest.TestCase):
+     def test_no_repetir_letra(self):
+          juego.letrasAdivinadas = ["g", "a"]
+          juego.letrasIncorrectas = ["w"]
+          esperado = False
+          actual = juego.verificar_repeticion_letra("z")
+          self.assertEqual(actual, esperado)
+    
+     def test_repetir_letra_adivinada(self):
+          juego.letrasAdivinadas = ["g", "a"]
+          juego.letrasIncorrectas = ["w"]
+          esperado = True
+          actual = juego.verificar_repeticion_letra("a")
+          self.assertEqual(actual, esperado)
+    
+     def test_repetir_letra_incorrecta(self):
+          juego.letrasAdivinadas = ["g", "a"]
+          juego.letrasIncorrectas = ["w"]
+          esperado = True
+          actual = juego.verificar_repeticion_letra("w")
+          self.assertEqual(actual, esperado)
+    
 
 class CantidadLetras(unittest.TestCase):
      def test_cantidad(self):
@@ -57,6 +84,6 @@ class CantidadLetras(unittest.TestCase):
           self.assertEqual(actual, esperado)
 
 
-
+# Para correr los tests
 if __name__ == '__main__':
     unittest.main()
