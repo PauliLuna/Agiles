@@ -3,7 +3,6 @@ import random
 palabrasAdivinar = ["giacomo","fideos", "ravioles"]
 
 class Ahorcado():
-
     def __init__(self):
         self.vidas = 7
         self.palabraAdivinar = random.choice(palabrasAdivinar)
@@ -26,7 +25,7 @@ class Ahorcado():
         
     def descontar_vida(self):
         if not self.vidas==0:
-            self.vidas =  self.vidas-1
+            self.vidas -=1
             return self.vidas
 
     def verificar_repeticion(self,A):
@@ -51,3 +50,25 @@ class Ahorcado():
             return True
         else:
             return False
+        
+    def imprimo_palabra(self):
+        palabra_mostrar = ""
+        for letra in self.palabraAdivinar:
+            if letra in self.letrasAdivinadas:
+                palabra_mostrar += letra
+            else:
+                palabra_mostrar += "_ "
+        return palabra_mostrar
+
+
+#muestra letra adivinada en lugar
+#verifica ingresa sola letra
+
+
+# JUEGO
+jugador = input("Bienvenido al juego ahorcado, ¿Cuál es tu nombre?")
+print("Bienvenido {}. Vamos a jugar!".format(jugador))
+
+juegoActual = Ahorcado()
+print(juegoActual.palabraAdivinar)
+print(juegoActual.imprimo_palabra())

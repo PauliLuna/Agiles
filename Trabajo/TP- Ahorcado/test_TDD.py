@@ -82,7 +82,20 @@ class CantidadLetras(unittest.TestCase):
           esperado = 7
           actual = juego.cantidad("giacomo")
           self.assertEqual(actual, esperado)
-
+    
+     def test_cantidad_2(self):
+          esperado = 9
+          actual = juego.cantidad("telefonos")
+          self.assertEqual(actual, esperado)
+    
+class ImprimoPalabra(unittest.TestCase):
+     def test_imprimo(self):
+            juego.palabraAdivinar = "giacomo"
+            juego.letrasAdivinadas = ["a", "o"]
+            esperado = "_ _ a _ o _ o"
+            actual = juego.imprimo_palabra()
+            self.assertEqual(actual, esperado)
+    
 
 # Para correr los tests
 if __name__ == '__main__':
