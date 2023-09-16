@@ -1,14 +1,30 @@
 import unittest
 from ahorcado import Ahorcado
 
-juego = Ahorcado("giacomo")
+# Creo una instancia del Ahorcado
+juego = Ahorcado()
+juego.palabraAdivinar = "giacomo"
+juego.palabrasIncorrectas.append("tirabuzones")
+
+class Vidas(unittest.TestCase):
+    def test_pierdo_primer_vida(self):
+            juego.vidas=7
+            esperado = 6 
+            actual = juego.descontar_vida()
+            self.assertEqual(actual, esperado)
+    
+    def test_pierdo_segunda_vida(self):
+            juego.vidas=6
+            esperado = 5
+            actual = juego.descontar_vida()
+            self.assertEqual(actual, esperado)
 
 class ArriesgarPalabraTest(unittest.TestCase):
-    
 
     def test_adivino_palabra(self):
         esperado = True
         actual = juego.arriesgoPalabra("giacomo")
+        print(actual)
         self.assertEqual(actual, esperado)
 
     def test_pierdo_palabra(self):
@@ -16,28 +32,17 @@ class ArriesgarPalabraTest(unittest.TestCase):
         actual = juego.arriesgoPalabra("nogiacomo")
         self.assertEqual(actual, esperado)
 
-
-class Vidas(unittest.TestCase):
-    def test_pierdo_primer_vida(self):
-            esperado = 6 
-            actual = juego.vidas_Actuales()
-            self.assertEqual(actual, esperado)
-    
-    def test_pierdo_segunda_vida(self):
-            esperado = 5
-            actual = juego.descontar_vida()
-            self.assertEqual(actual, esperado)
-
 class RepetirPalabras(unittest.TestCase):
      def test_no_repetir_palabras(self):
         esperado = False 
-        actual = verificar_repeticion("giacomo")
+        actual = juego.verificar_repeticion("giacomo2")
         self.assertEqual(actual, esperado)
 
      def test_repetir_palabras(self):
         esperado = True 
-        actual = verificar_repeticion("tirabuzones")
+        actual = juego.verificar_repeticion("tirabuzones")
         self.assertEqual(actual, esperado)
+
 
 # class RegistrarPalabra(unittest.TestCase):
 #      def test_agrego(self):
@@ -48,8 +53,10 @@ class RepetirPalabras(unittest.TestCase):
 class CantidadLetras(unittest.TestCase):
      def test_cantidad(self):
           esperado = 7
-          actual = cantidad("giacomo")
+          actual = juego.cantidad("giacomo")
           self.assertEqual(actual, esperado)
+
+
 
 if __name__ == '__main__':
     unittest.main()
