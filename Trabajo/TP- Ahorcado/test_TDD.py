@@ -92,7 +92,7 @@ class ImprimoPalabra(unittest.TestCase):
      def test_imprimo(self):
             juego.palabraAdivinar = "giacomo"
             juego.letrasAdivinadas = ["a", "o"]
-            esperado = "_ _ a _ o _ o"
+            esperado = "_ _ a _ o _ o "
             actual = juego.imprimo_palabra()
             self.assertEqual(actual, esperado)
     

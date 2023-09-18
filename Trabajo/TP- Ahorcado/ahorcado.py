@@ -55,7 +55,7 @@ class Ahorcado():
         palabra_mostrar = ""
         for letra in self.palabraAdivinar:
             if letra in self.letrasAdivinadas:
-                palabra_mostrar += letra
+                palabra_mostrar += letra+" "
             else:
                 palabra_mostrar += "_ "
         return palabra_mostrar
