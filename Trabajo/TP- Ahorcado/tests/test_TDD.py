@@ -1,5 +1,5 @@
 import unittest
-from ahorcado import Ahorcado
+from src.ahorcado import Ahorcado
 
 # Creo una instancia del Ahorcado
 juego = Ahorcado()
@@ -95,8 +95,6 @@ class ImprimoPalabra(unittest.TestCase):
             esperado = "_ _ a _ o _ o "
             actual = juego.imprimo_palabra()
             self.assertEqual(actual, esperado)
-    
 
-# Para correr los tests
 if __name__ == '__main__':
-    unittest.main()
+     unittest.main()

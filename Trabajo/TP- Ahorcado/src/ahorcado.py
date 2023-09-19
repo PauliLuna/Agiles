@@ -66,9 +66,9 @@ class Ahorcado():
 
 
 # JUEGO
-jugador = input("Bienvenido al juego ahorcado, ¿Cuál es tu nombre?")
-print("Bienvenido {}. Vamos a jugar!".format(jugador))
+#jugador = input("Bienvenido al juego ahorcado, ¿Cuál es tu nombre?")
+#print("Bienvenido {}. Vamos a jugar!".format(jugador))
 
-juegoActual = Ahorcado()
-print(juegoActual.palabraAdivinar)
-print(juegoActual.imprimo_palabra())
+#juegoActual = Ahorcado()
+#print(juegoActual.palabraAdivinar)
+#print(juegoActual.imprimo_palabra())
