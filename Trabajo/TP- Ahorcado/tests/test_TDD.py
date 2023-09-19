@@ -42,7 +42,6 @@ class RepetirPalabras(unittest.TestCase):
         actual = juego.verificar_repeticion("tirabuzones")
         self.assertEqual(actual, esperado)
 
-
 class ArriesgoLetra(unittest.TestCase):
      def test_adivino_letra(self):
           esperado = True
@@ -95,6 +94,39 @@ class ImprimoPalabra(unittest.TestCase):
             esperado = "_ _ a _ o _ o "
             actual = juego.imprimo_palabra()
             self.assertEqual(actual, esperado)
+
+class ValidoEntrada(unittest.TestCase):
+     def test_entrada_valida(self):
+          entrada = "hola"
+          esperado = True
+          actual = juego.validaEntrada(entrada)
+          self.assertEqual(actual, esperado)
+
+     def test_entrada_no_valida(self):
+          entrada = "?hola%123!"
+          esperado = False
+          actual = juego.validaEntrada(entrada)
+          self.assertEqual(actual, esperado)
+
+class ValidoJuego(unittest.TestCase):
+     def test_entrada_letra(self):
+          juego.palabraAdivinar = "giacomo"
+          entrada = "g"
+          esperado = True
+          actual = juego.validaEntrada(entrada)
+          self.assertEqual(actual, esperado)
+
+     def test_entrada_palabra(self):
+          entrada = "hola"
+          esperado = True
+          actual = juego.validaEntrada(entrada)
+          self.assertEqual(actual, esperado)
+
+     def test_entrada_no_valida(self):
+          entrada = "hola"
+          esperado = True
+          actual = juego.validaEntrada(entrada)
+          self.assertEqual(actual, esperado)
 
 if __name__ == '__main__':
      unittest.main()

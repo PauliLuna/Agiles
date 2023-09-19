@@ -1,6 +1,9 @@
 import random
+import re
 
 palabrasAdivinar = ["giacomo","fideos", "ravioles"]
+abecedario = list("abcdefghijklmnopqrstuvwxyz")
+
 
 class Ahorcado():
     def __init__(self):
@@ -12,6 +15,13 @@ class Ahorcado():
     
     def cantidad(self,palabra):
         return len(palabra)
+    
+    def juega(self,input):
+       if self.validaEntrada(input):
+            if len(input) == 1:
+                self.arriesgoLetra(input)
+            else:
+                self.arriesgoPalabra(input)
 
     def arriesgoPalabra(self, word):
         repite = self.verificar_repeticion(word)
@@ -44,6 +54,11 @@ class Ahorcado():
                 self.descontar_vida()
                 self.letrasIncorrectas.append(letra)
                 return False
+
+    def validaEntrada(self,input):
+    # Usamos una expresión regular para verificar si la cadena contiene solo letras
+        patron = r'^[a-zA-Z]+$'
+        return bool(re.match(patron,input))
     
     def verificar_repeticion_letra(self,letra):
         if letra in self.letrasIncorrectas or letra in self.letrasAdivinadas:
@@ -63,6 +78,7 @@ class Ahorcado():
 
 #muestra letra adivinada en lugar
 #verifica ingresa sola letra
+
 
 
 # JUEGO
