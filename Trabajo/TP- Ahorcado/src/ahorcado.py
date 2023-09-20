@@ -1,5 +1,6 @@
 import random
 import re
+import os
 
 palabrasAdivinar = ["giacomo","fideos", "ravioles"]
 abecedario = list("abcdefghijklmnopqrstuvwxyz")
@@ -13,6 +14,26 @@ class Ahorcado():
         self.letrasIncorrectas = []
         self.palabrasIncorrectas = []
     
+    def obtener_nombre(self):
+        jugador = input("Bienvenido al juego ahorcado, ¿Cuál es tu nombre? ")
+        return jugador
+    
+    def menu_opcion(self):
+        while True:
+            print("Opciones de juego:")
+            print("1- Nivel 1 (Fácil)")
+            print("2- Nivel 2 (Medio)")
+            print("3- Nivel 3 (Difícil)")
+            opcion = input("Ingrese opción: ")
+
+            if opcion in ["1", "2", "3"]:
+                break
+            else:
+                os.system('cls')
+                print("Opción incorrecta. Por favor, ingrese una opción válida (1, 2 o 3).")
+        return opcion        
+
+
     def cantidad(self,palabra):
         return len(palabra)
     
@@ -76,15 +97,18 @@ class Ahorcado():
         return palabra_mostrar
 
 
-#muestra letra adivinada en lugar
-#verifica ingresa sola letra
-
-
-
 # JUEGO
-#jugador = input("Bienvenido al juego ahorcado, ¿Cuál es tu nombre?")
-#print("Bienvenido {}. Vamos a jugar!".format(jugador))
+if __name__ == '__main__':
+    juegoActual = Ahorcado()
+    juegoActual.jugador = juegoActual.obtener_nombre()
+    print("Bienvenido {}. Vamos a jugar!".format(juegoActual.jugador))
+    juegoActual.menu_opcion()
 
-#juegoActual = Ahorcado()
-#print(juegoActual.palabraAdivinar)
-#print(juegoActual.imprimo_palabra())
+
+## NOTAS:
+# En Python, cuando importas un módulo, todas las declaraciones en ese módulo se ejecutan una vez,
+#  incluyendo las declaraciones que no están dentro de funciones o clases.
+#  En este caso, la línea juegoActual.obtener_nombre() se ejecuta inmediatamente cuando se importa el módulo
+#  ahorcado.py, antes de que se ejecuten las pruebas en el archivo test_TDD.py.
+# Para solucionar esto, puedes mover la línea juegoActual.obtener_nombre()
+#  dentro de una función o un bloque if __name__ == '__main__':

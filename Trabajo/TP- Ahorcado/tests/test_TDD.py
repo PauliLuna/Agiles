@@ -1,5 +1,6 @@
 import unittest
 from src.ahorcado import Ahorcado
+from unittest.mock import patch
 
 # Creo una instancia del Ahorcado
 juego = Ahorcado()
@@ -18,6 +19,28 @@ class Vidas(unittest.TestCase):
             esperado = 5
             actual = juego.descontar_vida()
             self.assertEqual(actual, esperado)
+
+class Menu(unittest.TestCase):
+
+     @patch('builtins.input', side_effect=["nombre_de_prueba"])  # Estableces la entrada simulada
+     def test_obtener_nombre(self, mock_input):
+        resultado = juego.obtener_nombre()
+        self.assertEqual(resultado, "nombre_de_prueba")
+
+     @patch('builtins.input', side_effect=["1"])
+     def test_menu_opcion_facil(self, mock_input):
+        resultado = juego.menu_opcion()
+        self.assertEqual(resultado, "1")
+
+     @patch('builtins.input', side_effect=["2"])
+     def test_menu_opcion_medio(self, mock_input):
+        resultado = juego.menu_opcion()
+        self.assertEqual(resultado, "2")
+
+     @patch('builtins.input', side_effect=["3"])
+     def test_menu_opcion_dificil(self, mock_input):
+        resultado = juego.menu_opcion()
+        self.assertEqual(resultado, "3")  
 
 class ArriesgarPalabraTest(unittest.TestCase):
 
