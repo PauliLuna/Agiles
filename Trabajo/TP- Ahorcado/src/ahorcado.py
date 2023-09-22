@@ -27,6 +27,7 @@ class Ahorcado():
             opcion = input("Ingrese opción: ")
 
             if opcion in ["1", "2", "3"]:
+                os.system('cls')
                 break
             else:
                 os.system('cls')
@@ -95,13 +96,13 @@ class Ahorcado():
                 palabra_mostrar += "_ "
         return palabra_mostrar
 
-
 # JUEGO
 if __name__ == '__main__':
     juegoActual = Ahorcado()
     juegoActual.jugador = juegoActual.obtener_nombre()
     print("Bienvenido {}. Vamos a jugar!".format(juegoActual.jugador))
     juegoActual.menu_opcion()
+    print(juegoActual.imprimo_palabra())
 
 
 ## NOTAS:
