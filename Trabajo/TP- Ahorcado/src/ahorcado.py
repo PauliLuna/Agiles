@@ -33,9 +33,8 @@ class Ahorcado():
                 print("Opción incorrecta. Por favor, ingrese una opción válida (1, 2 o 3).")
         return opcion        
 
-
-    def cantidad(self,palabra):
-        return len(palabra)
+   # def cantidad(self,palabra):
+     #   return len(palabra)
     
     def juega(self,input):
        if self.validaEntrada(input):
