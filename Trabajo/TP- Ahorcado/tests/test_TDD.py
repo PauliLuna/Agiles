@@ -79,8 +79,8 @@ class ValidoJuego(unittest.TestCase):
           self.assertEqual(actual, esperado)
 
      def test_entrada_no_valida(self):
-          entrada = "hola"
-          esperado = True
+          entrada = "#hola"
+          esperado = False
           actual = juego.validaEntrada(entrada)
           self.assertEqual(actual, esperado)
 
@@ -132,15 +132,51 @@ class Menu(unittest.TestCase):
 
 # HISTORIA DE USUARIO 5
 class Vidas(unittest.TestCase):
-    def test_pierdo_primer_vida(self):
+     def test_pierdo_primer_vida(self):
             juego.vidas=7
             esperado = 6 
             actual = juego.descontar_vida()
             self.assertEqual(actual, esperado)
     
-    def test_pierdo_segunda_vida(self):
+     def test_pierdo_segunda_vida(self):
             juego.vidas=6
             esperado = 5
+            actual = juego.descontar_vida()
+            self.assertEqual(actual, esperado)
+
+     def test_pierdo_tercera_vida(self):
+            juego.vidas=5
+            esperado = 4
+            actual = juego.descontar_vida()
+            self.assertEqual(actual, esperado)
+     
+     def test_pierdo_cuarta_vida(self):
+            juego.vidas=4
+            esperado = 3
+            actual = juego.descontar_vida()
+            self.assertEqual(actual, esperado)
+
+     def test_pierdo_quinta_vida(self):
+            juego.vidas=3
+            esperado = 2
+            actual = juego.descontar_vida()
+            self.assertEqual(actual, esperado)
+
+     def test_pierdo_sexta_vida(self):
+            juego.vidas=2
+            esperado = 1
+            actual = juego.descontar_vida()
+            self.assertEqual(actual, esperado)
+
+     def test_pierdo_septima_vida(self):
+            juego.vidas=1
+            esperado = 0
+            actual = juego.descontar_vida()
+            self.assertEqual(actual, esperado)
+
+     def test_sin_vida(self):
+            juego.vidas=0
+            esperado = 0
             actual = juego.descontar_vida()
             self.assertEqual(actual, esperado)
 

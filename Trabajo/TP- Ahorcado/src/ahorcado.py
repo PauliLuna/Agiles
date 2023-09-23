@@ -44,45 +44,52 @@ class Ahorcado():
             else:
                 self.arriesgoPalabra(input)
 
-    def arriesgoPalabra(self, word):
-        repite = self.verificar_repeticion(word)
-        if not repite:
-            if word == self.palabraAdivinar:
-                return True
-            else:
-                self.descontar_vida()
-                self.palabrasIncorrectas.append(word)
-                return False
-        
-    def descontar_vida(self):
-        if not self.vidas==0:
-            self.vidas -=1
-            return self.vidas
-
-    def verificar_repeticion(self,A):
-        if A in self.palabrasIncorrectas:
-            return True
-        else:
-            return False
+    def validaEntrada(self,input):
+    # Usamos una expresión regular para verificar si la cadena contiene solo letras
+        patron = r'^[a-zA-Z]+$'
+        return bool(re.match(patron,input))
     
     def arriesgoLetra(self, letra):
         repite = self.verificar_repeticion_letra(letra)
         if not repite:
             if letra in self.palabraAdivinar:
                 self.letrasAdivinadas.append(letra)
+                print("Letra correcta!")
                 return True
             else:
                 self.descontar_vida()
                 self.letrasIncorrectas.append(letra)
+                print("Letra incorrecta. Perdiste 1 vida")
                 return False
 
-    def validaEntrada(self,input):
-    # Usamos una expresión regular para verificar si la cadena contiene solo letras
-        patron = r'^[a-zA-Z]+$'
-        return bool(re.match(patron,input))
-    
     def verificar_repeticion_letra(self,letra):
         if letra in self.letrasIncorrectas or letra in self.letrasAdivinadas:
+            print("La letra {} ya fué ingresada!".format(letra))
+            return True
+        else:
+            return False
+
+    def arriesgoPalabra(self, word):
+        repite = self.verificar_repeticion(word)
+        if not repite:
+            if word == self.palabraAdivinar:
+                print("La palabra ingresada es correcta!")
+                return True
+            else:
+                self.descontar_vida()
+                self.palabrasIncorrectas.append(word)
+                print("La palabra ingresada es incorrecta! Perdiste 1 vida")
+                return False
+
+    def descontar_vida(self):
+        if not self.vidas==0:
+            self.vidas -=1
+            return self.vidas
+        else:
+            return 0
+
+    def verificar_repeticion(self,A):
+        if A in self.palabrasIncorrectas:
             return True
         else:
             return False
@@ -98,11 +105,63 @@ class Ahorcado():
 
 # JUEGO
 if __name__ == '__main__':
-    juegoActual = Ahorcado()
-    juegoActual.jugador = juegoActual.obtener_nombre()
-    print("Bienvenido {}. Vamos a jugar!".format(juegoActual.jugador))
-    juegoActual.menu_opcion()
-    print(juegoActual.imprimo_palabra())
+    while True:
+        juegoActual = Ahorcado()
+        juegoActual.jugador = juegoActual.obtener_nombre()
+        print("¡Bienvenido {}! --> Vamos a jugar!".format(juegoActual.jugador))
+        op = juegoActual.menu_opcion()
+        if op == "1":
+            print("-----Bienvenido al nivel FACIL-----")
+            print ("           Mucha suerte!")
+            print("Vidas: {}".format(juegoActual.vidas))
+            print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
+            print(juegoActual.imprimo_palabra())
+            print("")
+            while juegoActual.vidas > 0 :
+                ingreso = input("Ingresa una letra o palabra: ")
+                juegoActual.juega(ingreso)
+                print("Vidas: {}".format(juegoActual.vidas))
+                print("")
+                print(juegoActual.imprimo_palabra())
+            print("Agotaste todas las vidas!")
+            print("")
+            
+        if op == "2":
+            print("-----Bienvenido al nivel MEDIO-----")
+            print ("           Mucha suerte!")
+            print("Vidas: {}".format(juegoActual.vidas))
+            print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
+            print(juegoActual.imprimo_palabra())
+            print("")
+            while juegoActual.vidas > 0 :
+                ingreso = input("Ingresa una letra o palabra: ")
+                juegoActual.juega(ingreso)
+                print("Vidas: {}".format(juegoActual.vidas))
+                print("")
+                print(juegoActual.imprimo_palabra())
+            print("Agotaste todas las vidas!")
+
+
+        if op == "3":
+            print("-----Bienvenido al nivel DIFICIL-----")
+            print ("           Mucha suerte!")
+            print("Vidas: {}".format(juegoActual.vidas))
+            print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
+            print(juegoActual.imprimo_palabra())
+            print("")
+            while juegoActual.vidas > 0 :
+                ingreso = input("Ingresa una letra o palabra: ")
+                juegoActual.juega(ingreso)
+                print("Vidas: {}".format(juegoActual.vidas))
+                print("")
+                print(juegoActual.imprimo_palabra())
+            print("Agotaste todas las vidas!")
+        
+
+
+            
+
+
 
 
 ## NOTAS:
