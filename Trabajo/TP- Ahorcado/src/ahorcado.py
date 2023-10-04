@@ -13,6 +13,7 @@ class Ahorcado():
         self.letrasAdivinadas = []
         self.letrasIncorrectas = []
         self.palabrasIncorrectas = []
+        self.gano = 0
     
     def obtener_nombre(self):
         jugador = input("Bienvenido al juego ahorcado, ¿Cuál es tu nombre? ")
@@ -42,7 +43,10 @@ class Ahorcado():
             if len(input) == 1:
                 self.arriesgoLetra(input)
             else:
-                self.arriesgoPalabra(input)
+                if self.arriesgoPalabra(input):
+                    return True
+                else:
+                    return False
 
     def validaEntrada(self,input):
     # Usamos una expresión regular para verificar si la cadena contiene solo letras
@@ -55,6 +59,10 @@ class Ahorcado():
             if letra in self.palabraAdivinar:
                 self.letrasAdivinadas.append(letra)
                 print("Letra correcta!")
+                if "_" in self.imprimo_palabra():
+                    self.gano = 0
+                else:
+                    self.gano = 1
                 return True
             else:
                 self.descontar_vida()
@@ -73,10 +81,11 @@ class Ahorcado():
         repite = self.verificar_repeticion(word)
         if not repite:
             if word == self.palabraAdivinar:
-                print("La palabra ingresada es correcta!")
+                self.gano= 1
                 return True
             else:
                 self.descontar_vida()
+                self.gano= 0
                 self.palabrasIncorrectas.append(word)
                 print("La palabra ingresada es incorrecta! Perdiste 1 vida")
                 return False
@@ -90,6 +99,7 @@ class Ahorcado():
 
     def verificar_repeticion(self,A):
         if A in self.palabrasIncorrectas:
+            print("La palabra {} ya fue ingresada!".format(A))
             return True
         else:
             return False
@@ -101,6 +111,12 @@ class Ahorcado():
                 palabra_mostrar += letra+" "
             else:
                 palabra_mostrar += "_ "
+        return palabra_mostrar
+    
+    def imprimo_palabra_ganadora(self, palabra):
+        palabra_mostrar = ""
+        for letra in palabra:
+            palabra_mostrar += letra+" "
         return palabra_mostrar
 
 # JUEGO
@@ -117,13 +133,25 @@ if __name__ == '__main__':
             print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
             print(juegoActual.imprimo_palabra())
             print("")
-            while juegoActual.vidas > 0 :
-                ingreso = input("Ingresa una letra o palabra: ")
+            while juegoActual.vidas > 0 and juegoActual.gano !=1:
+                ingreso = input("Ingresa una letra o palabra: ").lower()
                 juegoActual.juega(ingreso)
                 print("Vidas: {}".format(juegoActual.vidas))
                 print("")
                 print(juegoActual.imprimo_palabra())
-            print("Agotaste todas las vidas!")
+
+            if juegoActual.gano==1:
+                print("La palabra ingresada es correcta!")
+                print(juegoActual.imprimo_palabra_ganadora(ingreso))
+                print(" ")
+                print("GANASTE!")
+                print(" ")
+
+            else:
+                print("Agotaste todas las vidas!")
+                print(" ")
+                print("---GAME OVER----")
+                print(" ")
             print("")
             
         if op == "2":
@@ -133,13 +161,23 @@ if __name__ == '__main__':
             print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
             print(juegoActual.imprimo_palabra())
             print("")
-            while juegoActual.vidas > 0 :
-                ingreso = input("Ingresa una letra o palabra: ")
+            while juegoActual.vidas > 0 and juegoActual.gano !=1:
+                ingreso = input("Ingresa una letra o palabra: ").lower()
                 juegoActual.juega(ingreso)
                 print("Vidas: {}".format(juegoActual.vidas))
                 print("")
                 print(juegoActual.imprimo_palabra())
-            print("Agotaste todas las vidas!")
+
+            if juegoActual.gano==1:
+                print("La palabra ingresada es correcta!")
+                print(juegoActual.imprimo_palabra_ganadora(ingreso))
+                print(" ")
+                print("GANASTE!")
+                print(" ")
+
+            else:
+                print("Agotaste todas las vidas!")
+            print("")
 
 
         if op == "3":
@@ -149,17 +187,26 @@ if __name__ == '__main__':
             print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
             print(juegoActual.imprimo_palabra())
             print("")
-            while juegoActual.vidas > 0 :
-                ingreso = input("Ingresa una letra o palabra: ")
+            while juegoActual.vidas > 0 and juegoActual.gano !=1:
+                ingreso = input("Ingresa una letra o palabra: ").lower()
                 juegoActual.juega(ingreso)
                 print("Vidas: {}".format(juegoActual.vidas))
                 print("")
                 print(juegoActual.imprimo_palabra())
-            print("Agotaste todas las vidas!")
+
+            if juegoActual.gano==1:
+                print("La palabra ingresada es correcta!")
+                print(juegoActual.imprimo_palabra_ganadora(ingreso))
+                print(" ")
+                print("GANASTE!")
+                print(" ")
+
+            else:
+                print("Agotaste todas las vidas!")
+            print("")
         
 
 
-            
 
 
 

@@ -15,10 +15,20 @@ class ArriesgarPalabraTest(unittest.TestCase):
         actual = juego.arriesgoPalabra("giacomo")
         self.assertEqual(actual, esperado)
 
+     def test_adivino_palabra_flag(self):
+        esperado = 1
+        juego.arriesgoPalabra("giacomo")
+        self.assertEqual(juego.gano, esperado)
+
      def test_pierdo_palabra(self):
         esperado = False 
         actual = juego.arriesgoPalabra("nogiacomo")
         self.assertEqual(actual, esperado)
+
+     def test_pierdo_palabra_flag(self):
+        esperado = 0
+        juego.arriesgoPalabra("nogiacomo")
+        self.assertEqual(juego.gano, esperado)
      
      def test_no_repetir_palabras(self):
         esperado = False 
