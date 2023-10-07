@@ -2,14 +2,24 @@ import random
 import re
 import os
 
-palabrasAdivinar = ["giacomo","fideos", "ravioles"]
 abecedario = list("abcdefghijklmnopqrstuvwxyz")
+
+#Palabras con tematica
+palabras_animales = ["gato", "perro", "oso" ,"elefante", "jirafa", "tigre", "delfín"]
+palabras_comida = ["pizza", "hamburguesa", "fideos", "ensalada", "helado", "sushi"]
+palabras_paises = ["italia", "españa", "francia", "canada", "japon", "australia"]
+palabras_profesiones = ["doctor", "profesor", "ingeniero", "policia", "bombero", "musico"]
+palabras_deportes = ["futbol", "baloncesto", "tenis", "natacion", "atletismo","ciclismo"]
+
+#Palabra con niveles de dificultad
+palabras_faciles = ["gato", "sol", "flor", "casa", "libro", "rio", "lago","oso","nube"]
+palabras_medias = ["coche", "ciudad", "invierno", "perro", "montaña", "verano"]
+palabras_dificiles = ["anticonstitucionalidad", "anacronismo", "paradigma", "quimera", "efervescente","electroencefalografista", "esternocleidomastoideo"]
 
 
 class Ahorcado():
     def __init__(self):
         self.vidas = 7
-        self.palabraAdivinar = random.choice(palabrasAdivinar)
         self.letrasAdivinadas = []
         self.letrasIncorrectas = []
         self.palabrasIncorrectas = []
@@ -127,6 +137,7 @@ if __name__ == '__main__':
         print("¡Bienvenido {}! --> Vamos a jugar!".format(juegoActual.jugador))
         op = juegoActual.menu_opcion()
         if op == "1":
+            juegoActual.palabraAdivinar = random.choice(palabras_faciles)
             print("-----Bienvenido al nivel FACIL-----")
             print ("           Mucha suerte!")
             print("Vidas: {}".format(juegoActual.vidas))
@@ -148,13 +159,14 @@ if __name__ == '__main__':
                 print(" ")
 
             else:
-                print("Agotaste todas las vidas!")
+                print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
                 print(" ")
                 print("---GAME OVER----")
                 print(" ")
             print("")
             
         if op == "2":
+            juegoActual.palabraAdivinar = random.choice(palabras_medias)
             print("-----Bienvenido al nivel MEDIO-----")
             print ("           Mucha suerte!")
             print("Vidas: {}".format(juegoActual.vidas))
@@ -176,11 +188,15 @@ if __name__ == '__main__':
                 print(" ")
 
             else:
-                print("Agotaste todas las vidas!")
+                print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
+                print(" ")
+                print("---GAME OVER----")
+                print(" ")
             print("")
 
 
         if op == "3":
+            juegoActual.palabraAdivinar = random.choice(palabras_dificiles)
             print("-----Bienvenido al nivel DIFICIL-----")
             print ("           Mucha suerte!")
             print("Vidas: {}".format(juegoActual.vidas))
@@ -202,7 +218,10 @@ if __name__ == '__main__':
                 print(" ")
 
             else:
-                print("Agotaste todas las vidas!")
+                print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
+                print(" ")
+                print("---GAME OVER----")
+                print(" ")
             print("")
         
 
