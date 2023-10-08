@@ -149,6 +149,22 @@ class Ahorcado():
         for letra in palabra:
             palabra_mostrar += letra+" "
         return palabra_mostrar
+    
+    def definir_si_gano(self):
+        if juegoActual.gano==1:
+            print("La palabra ingresada es correcta!")
+            print(juegoActual.imprimo_palabra_ganadora(ingreso))
+            print(" ")
+            print("GANASTE!")
+            print(" ")
+
+        else:
+            print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
+            print(" ")
+            print("---GAME OVER----")
+            print(" ")
+
+        print("")
 
 # JUEGO
 if __name__ == '__main__':
@@ -178,20 +194,8 @@ if __name__ == '__main__':
                     print("")
                     print(juegoActual.imprimo_palabra())
 
-                if juegoActual.gano==1:
-                    print("La palabra ingresada es correcta!")
-                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
-                    print(" ")
-                    print("GANASTE!")
-                    print(" ")
+                juegoActual.definir_si_gano()
 
-                else:
-                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
-                    print(" ")
-                    print("---GAME OVER----")
-                    print(" ")
-                print("")
-                
             if op == "2":
                 juegoActual.palabraAdivinar = random.choice(palabras_medias)
                 print("-----Bienvenido al nivel MEDIO-----")
@@ -207,20 +211,7 @@ if __name__ == '__main__':
                     print("")
                     print(juegoActual.imprimo_palabra())
 
-                if juegoActual.gano==1:
-                    print("La palabra ingresada es correcta!")
-                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
-                    print(" ")
-                    print("GANASTE!")
-                    print(" ")
-
-                else:
-                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
-                    print(" ")
-                    print("---GAME OVER----")
-                    print(" ")
-                print("")
-
+                juegoActual.definir_si_gano()
 
             if op == "3":
                 juegoActual.palabraAdivinar = random.choice(palabras_dificiles)
@@ -237,19 +228,7 @@ if __name__ == '__main__':
                     print("")
                     print(juegoActual.imprimo_palabra())
 
-                if juegoActual.gano==1:
-                    print("La palabra ingresada es correcta!")
-                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
-                    print(" ")
-                    print("GANASTE!")
-                    print(" ")
-
-                else:
-                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
-                    print(" ")
-                    print("---GAME OVER----")
-                    print(" ")
-                print("")
+                juegoActual.definir_si_gano()
         
         if opcion == "2":
             op = juegoActual.menu_opcion_tematicas()
@@ -268,19 +247,7 @@ if __name__ == '__main__':
                     print("")
                     print(juegoActual.imprimo_palabra())
 
-                if juegoActual.gano==1:
-                    print("La palabra ingresada es correcta!")
-                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
-                    print(" ")
-                    print("GANASTE!")
-                    print(" ")
-
-                else:
-                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
-                    print(" ")
-                    print("---GAME OVER----")
-                    print(" ")
-                print("")
+                juegoActual.definir_si_gano()
                 
             if op == "2":
                 juegoActual.palabraAdivinar = random.choice(palabras_comida)
@@ -297,20 +264,7 @@ if __name__ == '__main__':
                     print("")
                     print(juegoActual.imprimo_palabra())
 
-                if juegoActual.gano==1:
-                    print("La palabra ingresada es correcta!")
-                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
-                    print(" ")
-                    print("GANASTE!")
-                    print(" ")
-
-                else:
-                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
-                    print(" ")
-                    print("---GAME OVER----")
-                    print(" ")
-                print("")
-
+                juegoActual.definir_si_gano()
 
             if op == "3":
                 juegoActual.palabraAdivinar = random.choice(palabras_paises)
@@ -327,19 +281,7 @@ if __name__ == '__main__':
                     print("")
                     print(juegoActual.imprimo_palabra())
 
-                if juegoActual.gano==1:
-                    print("La palabra ingresada es correcta!")
-                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
-                    print(" ")
-                    print("GANASTE!")
-                    print(" ")
-
-                else:
-                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
-                    print(" ")
-                    print("---GAME OVER----")
-                    print(" ")
-                print("")
+                juegoActual.definir_si_gano()
 
             if op == "4":
                 juegoActual.palabraAdivinar = random.choice(palabras_profesiones)
@@ -356,20 +298,7 @@ if __name__ == '__main__':
                     print("")
                     print(juegoActual.imprimo_palabra())
 
-                if juegoActual.gano==1:
-                    print("La palabra ingresada es correcta!")
-                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
-                    print(" ")
-                    print("GANASTE!")
-                    print(" ")
-
-                else:
-                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
-                    print(" ")
-                    print("---GAME OVER----")
-                    print(" ")
-                print("")
-
+                juegoActual.definir_si_gano()
 
             if op == "5":
                 juegoActual.palabraAdivinar = random.choice(palabras_deportes)
@@ -386,19 +315,7 @@ if __name__ == '__main__':
                     print("")
                     print(juegoActual.imprimo_palabra())
 
-                if juegoActual.gano==1:
-                    print("La palabra ingresada es correcta!")
-                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
-                    print(" ")
-                    print("GANASTE!")
-                    print(" ")
-
-                else:
-                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
-                    print(" ")
-                    print("---GAME OVER----")
-                    print(" ")
-                print("")
+                juegoActual.definir_si_gano()
 
 
 
