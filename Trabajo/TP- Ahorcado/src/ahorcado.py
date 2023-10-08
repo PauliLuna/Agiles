@@ -29,21 +29,42 @@ class Ahorcado():
         jugador = input("Bienvenido al juego ahorcado, ¿Cuál es tu nombre? ")
         return jugador
     
-    def menu_opcion(self):
+    def menu_opcion_niveles(self):
         while True:
-            print("Opciones de juego:")
-            print("1- Nivel 1 (Fácil)")
-            print("2- Nivel 2 (Medio)")
-            print("3- Nivel 3 (Difícil)")
-            opcion = input("Ingrese opción: ")
+                print("Opciones de juego:")
+                print("1- Nivel 1 (Fácil)")
+                print("2- Nivel 2 (Medio)")
+                print("3- Nivel 3 (Difícil)")
+                opcion = input("Ingrese opción: ")
 
-            if opcion in ["1", "2", "3"]:
+                if opcion in ["1", "2", "3"]:
+                    os.system('cls')
+                    break
+                else:
+                    os.system('cls')
+                    print("Opción incorrecta. Por favor, ingrese una opción válida (1, 2 o 3).")        
+
+        return opcion
+
+    def menu_opcion_tematicas(self):
+        while True:
+            print("Seleccione una temática: ")
+            print("1- Animales")
+            print("2- Comida")
+            print("3- Paises")
+            print("4- Profesionales")
+            print("5- Deportes")
+            opcion = input("Ingrese opción: ")
+            
+            if opcion in ["1", "2", "3", "4", "5"]:
                 os.system('cls')
                 break
             else:
                 os.system('cls')
-                print("Opción incorrecta. Por favor, ingrese una opción válida (1, 2 o 3).")
-        return opcion        
+                print("Opción incorrecta. Por favor, ingrese una opción válida (1, 2, 3, 4 o 5).")
+        
+        return opcion
+
 
    # def cantidad(self,palabra):
      #   return len(palabra)
@@ -135,98 +156,249 @@ if __name__ == '__main__':
         juegoActual = Ahorcado()
         juegoActual.jugador = juegoActual.obtener_nombre()
         print("¡Bienvenido {}! --> Vamos a jugar!".format(juegoActual.jugador))
-        op = juegoActual.menu_opcion()
-        if op == "1":
-            juegoActual.palabraAdivinar = random.choice(palabras_faciles)
-            print("-----Bienvenido al nivel FACIL-----")
-            print ("           Mucha suerte!")
-            print("Vidas: {}".format(juegoActual.vidas))
-            print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
-            print(juegoActual.imprimo_palabra())
-            print("")
-            while juegoActual.vidas > 0 and juegoActual.gano !=1:
-                ingreso = input("Ingresa una letra o palabra: ").lower()
-                juegoActual.juega(ingreso)
+        print("--------------------------------------------------------")
+        print("Seleccione un tipo de juego: ")
+        print("1- Jugar por nivel de dificultad")
+        print("2- Jugar por temática")
+        opcion = input("Ingrese opción: ")
+        if opcion == "1":
+            op = juegoActual.menu_opcion_niveles()
+            if op == "1":
+                juegoActual.palabraAdivinar = random.choice(palabras_faciles)
+                print("-----Bienvenido al nivel FACIL-----")
+                print ("           Mucha suerte!")
                 print("Vidas: {}".format(juegoActual.vidas))
-                print("")
+                print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
                 print(juegoActual.imprimo_palabra())
+                print("")
+                while juegoActual.vidas > 0 and juegoActual.gano !=1:
+                    ingreso = input("Ingresa una letra o palabra: ").lower()
+                    juegoActual.juega(ingreso)
+                    print("Vidas: {}".format(juegoActual.vidas))
+                    print("")
+                    print(juegoActual.imprimo_palabra())
 
-            if juegoActual.gano==1:
-                print("La palabra ingresada es correcta!")
-                print(juegoActual.imprimo_palabra_ganadora(ingreso))
-                print(" ")
-                print("GANASTE!")
-                print(" ")
+                if juegoActual.gano==1:
+                    print("La palabra ingresada es correcta!")
+                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
+                    print(" ")
+                    print("GANASTE!")
+                    print(" ")
 
-            else:
-                print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
-                print(" ")
-                print("---GAME OVER----")
-                print(" ")
-            print("")
-            
-        if op == "2":
-            juegoActual.palabraAdivinar = random.choice(palabras_medias)
-            print("-----Bienvenido al nivel MEDIO-----")
-            print ("           Mucha suerte!")
-            print("Vidas: {}".format(juegoActual.vidas))
-            print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
-            print(juegoActual.imprimo_palabra())
-            print("")
-            while juegoActual.vidas > 0 and juegoActual.gano !=1:
-                ingreso = input("Ingresa una letra o palabra: ").lower()
-                juegoActual.juega(ingreso)
+                else:
+                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
+                    print(" ")
+                    print("---GAME OVER----")
+                    print(" ")
+                print("")
+                
+            if op == "2":
+                juegoActual.palabraAdivinar = random.choice(palabras_medias)
+                print("-----Bienvenido al nivel MEDIO-----")
+                print ("           Mucha suerte!")
                 print("Vidas: {}".format(juegoActual.vidas))
-                print("")
+                print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
                 print(juegoActual.imprimo_palabra())
+                print("")
+                while juegoActual.vidas > 0 and juegoActual.gano !=1:
+                    ingreso = input("Ingresa una letra o palabra: ").lower()
+                    juegoActual.juega(ingreso)
+                    print("Vidas: {}".format(juegoActual.vidas))
+                    print("")
+                    print(juegoActual.imprimo_palabra())
 
-            if juegoActual.gano==1:
-                print("La palabra ingresada es correcta!")
-                print(juegoActual.imprimo_palabra_ganadora(ingreso))
-                print(" ")
-                print("GANASTE!")
-                print(" ")
+                if juegoActual.gano==1:
+                    print("La palabra ingresada es correcta!")
+                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
+                    print(" ")
+                    print("GANASTE!")
+                    print(" ")
 
-            else:
-                print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
-                print(" ")
-                print("---GAME OVER----")
-                print(" ")
-            print("")
+                else:
+                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
+                    print(" ")
+                    print("---GAME OVER----")
+                    print(" ")
+                print("")
 
 
-        if op == "3":
-            juegoActual.palabraAdivinar = random.choice(palabras_dificiles)
-            print("-----Bienvenido al nivel DIFICIL-----")
-            print ("           Mucha suerte!")
-            print("Vidas: {}".format(juegoActual.vidas))
-            print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
-            print(juegoActual.imprimo_palabra())
-            print("")
-            while juegoActual.vidas > 0 and juegoActual.gano !=1:
-                ingreso = input("Ingresa una letra o palabra: ").lower()
-                juegoActual.juega(ingreso)
+            if op == "3":
+                juegoActual.palabraAdivinar = random.choice(palabras_dificiles)
+                print("-----Bienvenido al nivel DIFICIL-----")
+                print ("           Mucha suerte!")
                 print("Vidas: {}".format(juegoActual.vidas))
-                print("")
+                print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
                 print(juegoActual.imprimo_palabra())
+                print("")
+                while juegoActual.vidas > 0 and juegoActual.gano !=1:
+                    ingreso = input("Ingresa una letra o palabra: ").lower()
+                    juegoActual.juega(ingreso)
+                    print("Vidas: {}".format(juegoActual.vidas))
+                    print("")
+                    print(juegoActual.imprimo_palabra())
 
-            if juegoActual.gano==1:
-                print("La palabra ingresada es correcta!")
-                print(juegoActual.imprimo_palabra_ganadora(ingreso))
-                print(" ")
-                print("GANASTE!")
-                print(" ")
+                if juegoActual.gano==1:
+                    print("La palabra ingresada es correcta!")
+                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
+                    print(" ")
+                    print("GANASTE!")
+                    print(" ")
 
-            else:
-                print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
-                print(" ")
-                print("---GAME OVER----")
-                print(" ")
-            print("")
+                else:
+                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
+                    print(" ")
+                    print("---GAME OVER----")
+                    print(" ")
+                print("")
         
+        if opcion == "2":
+            op = juegoActual.menu_opcion_tematicas()
+            if op == "1":
+                juegoActual.palabraAdivinar = random.choice(palabras_animales)
+                print("-----Bienvenido a la temática ANIMALES-----")
+                print ("           Mucha suerte!")
+                print("Vidas: {}".format(juegoActual.vidas))
+                print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
+                print(juegoActual.imprimo_palabra())
+                print("")
+                while juegoActual.vidas > 0 and juegoActual.gano !=1:
+                    ingreso = input("Ingresa una letra o palabra: ").lower()
+                    juegoActual.juega(ingreso)
+                    print("Vidas: {}".format(juegoActual.vidas))
+                    print("")
+                    print(juegoActual.imprimo_palabra())
+
+                if juegoActual.gano==1:
+                    print("La palabra ingresada es correcta!")
+                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
+                    print(" ")
+                    print("GANASTE!")
+                    print(" ")
+
+                else:
+                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
+                    print(" ")
+                    print("---GAME OVER----")
+                    print(" ")
+                print("")
+                
+            if op == "2":
+                juegoActual.palabraAdivinar = random.choice(palabras_comida)
+                print("-----Bienvenido a la temática COMIDA-----")
+                print ("           Mucha suerte!")
+                print("Vidas: {}".format(juegoActual.vidas))
+                print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
+                print(juegoActual.imprimo_palabra())
+                print("")
+                while juegoActual.vidas > 0 and juegoActual.gano !=1:
+                    ingreso = input("Ingresa una letra o palabra: ").lower()
+                    juegoActual.juega(ingreso)
+                    print("Vidas: {}".format(juegoActual.vidas))
+                    print("")
+                    print(juegoActual.imprimo_palabra())
+
+                if juegoActual.gano==1:
+                    print("La palabra ingresada es correcta!")
+                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
+                    print(" ")
+                    print("GANASTE!")
+                    print(" ")
+
+                else:
+                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
+                    print(" ")
+                    print("---GAME OVER----")
+                    print(" ")
+                print("")
 
 
+            if op == "3":
+                juegoActual.palabraAdivinar = random.choice(palabras_paises)
+                print("-----Bienvenido a la temática PAISES-----")
+                print ("           Mucha suerte!")
+                print("Vidas: {}".format(juegoActual.vidas))
+                print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
+                print(juegoActual.imprimo_palabra())
+                print("")
+                while juegoActual.vidas > 0 and juegoActual.gano !=1:
+                    ingreso = input("Ingresa una letra o palabra: ").lower()
+                    juegoActual.juega(ingreso)
+                    print("Vidas: {}".format(juegoActual.vidas))
+                    print("")
+                    print(juegoActual.imprimo_palabra())
 
+                if juegoActual.gano==1:
+                    print("La palabra ingresada es correcta!")
+                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
+                    print(" ")
+                    print("GANASTE!")
+                    print(" ")
+
+                else:
+                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
+                    print(" ")
+                    print("---GAME OVER----")
+                    print(" ")
+                print("")
+
+            if op == "4":
+                juegoActual.palabraAdivinar = random.choice(palabras_profesiones)
+                print("-----Bienvenido a la temática PROFESIONES-----")
+                print ("           Mucha suerte!")
+                print("Vidas: {}".format(juegoActual.vidas))
+                print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
+                print(juegoActual.imprimo_palabra())
+                print("")
+                while juegoActual.vidas > 0 and juegoActual.gano !=1:
+                    ingreso = input("Ingresa una letra o palabra: ").lower()
+                    juegoActual.juega(ingreso)
+                    print("Vidas: {}".format(juegoActual.vidas))
+                    print("")
+                    print(juegoActual.imprimo_palabra())
+
+                if juegoActual.gano==1:
+                    print("La palabra ingresada es correcta!")
+                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
+                    print(" ")
+                    print("GANASTE!")
+                    print(" ")
+
+                else:
+                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
+                    print(" ")
+                    print("---GAME OVER----")
+                    print(" ")
+                print("")
+
+
+            if op == "5":
+                juegoActual.palabraAdivinar = random.choice(palabras_deportes)
+                print("-----Bienvenido a la temática DEPORTES-----")
+                print ("           Mucha suerte!")
+                print("Vidas: {}".format(juegoActual.vidas))
+                print("La palabra a adivinar tiene {} letras".format(len(juegoActual.palabraAdivinar)))
+                print(juegoActual.imprimo_palabra())
+                print("")
+                while juegoActual.vidas > 0 and juegoActual.gano !=1:
+                    ingreso = input("Ingresa una letra o palabra: ").lower()
+                    juegoActual.juega(ingreso)
+                    print("Vidas: {}".format(juegoActual.vidas))
+                    print("")
+                    print(juegoActual.imprimo_palabra())
+
+                if juegoActual.gano==1:
+                    print("La palabra ingresada es correcta!")
+                    print(juegoActual.imprimo_palabra_ganadora(ingreso))
+                    print(" ")
+                    print("GANASTE!")
+                    print(" ")
+
+                else:
+                    print("Agotaste todas las vidas! La palabra a adivinar era: {}".format(juegoActual.palabraAdivinar))
+                    print(" ")
+                    print("---GAME OVER----")
+                    print(" ")
+                print("")
 
 
 
