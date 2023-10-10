@@ -315,7 +315,7 @@ if __name__ == '__main__':
                     print("")
                     print(juegoActual.imprimo_palabra())
 
-                juegoActual.definir_si_gano()  
+                juegoActual.definir_si_gano()
 
 
 
